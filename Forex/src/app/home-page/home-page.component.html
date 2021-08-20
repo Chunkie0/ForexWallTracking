@@ -13,7 +13,7 @@
       <label for="api">Enter API key(optional)</label>
       <input formControlName="apiKey" type="text" name="api">
     </div>
-    <input type="submit" value="Submit">
+    <input type="submit" value="Submit" class="submit">
   </form>
   <table>
     <thead>
@@ -37,7 +37,7 @@
         <td>{{result.low}}</td>
         <td>{{result.high}}</td>
         <td>{{result.changes}}</td>
-        <td>{{result.date}}</td>
+        <td>{{dateTime()}}</td>
       </tr>
     </tbody>
   </table>

@@ -1,5 +1,6 @@
+import { getLocaleDateTimeFormat } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-home-page',
@@ -24,8 +25,8 @@ export class HomePageComponent implements OnInit {
   onSubmit() {
     if (this.input.apiKey.value === "") {
       setInterval(() => {
-      this.fetchCurrency(this.input.currency.value)
-    }, this.userInput.interval * 1000)
+        this.fetchCurrency(this.input.currency.value)
+      }, this.userInput.interval * 1000)
     } else {
       setInterval(() => {
         this.fetchCurrency(this.input.currency.value, this.input.apiKey.value)
@@ -40,6 +41,11 @@ export class HomePageComponent implements OnInit {
     getCurrency.json().then(data => {
       this.results = data
     })
+  }
+
+  dateTime() {
+    const today = new Date();
+    return today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate() + ' ' + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
   }
 
 }
