@@ -67,6 +67,7 @@ td:last-child {
 
 .currencySelect {
   border: 1px solid #ccc;
+  margin-top: 10px;
   margin-bottom: 10px;
   padding: 0 5px 5px;
   width: 100%;
@@ -86,5 +87,16 @@ td:last-child {
   width: 100%;
   padding-left: 2px;
   font-size: 14px;
+}
 
+h3 {
+  text-align: center;
+}
+
+form {
+  margin-top: 10px;
+}
+
+.formsInput{
+  margin-top: 30px;
 }
