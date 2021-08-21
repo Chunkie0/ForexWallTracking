@@ -1,15 +1,98 @@
 <div class="formsResults">
   <h1>Forex Live Wall</h1>
   <form [formGroup]="userInputForm" (ngSubmit)="onSubmit()">
-    <div class="inputForm">
-      <label for="currencies">Currencies</label>
-      <input formControlName="currency" name="currencies" type=text maxlength="7">
-      <div *ngIf="input.currency.invalid && input.currency.touched">
-        <div *ngIf="input.currency.errors?.required">
-          Currency pairs are required.
+    <div>
+      <h3>Select currencies to track exchange rate.</h3>
+      <div class="currencySelect">
+        <label for="firstCurrency">Select first currency</label>
+        <select class="currency" name="firstCurrency" id="firstCurrency" formControlName="firstCurrency">
+          <option value="EUR">EUR</option>
+          <option value="USD">USD</option>
+          <option value="GBP">GBP</option>
+          <option value="AUD">AUD</option>
+          <option value="CAD">CAD</option>
+          <option value="CHF">CHF</option>
+          <option value="NZD">NZD</option>
+          <option value="EU50">EU50</option>
+          <option value="US30">US30</option>
+          <option value="UK10YB">UK10YB</option>
+          <option value="HK33">HK33</option>
+          <option value="XAU">XAU</option>
+          <option value="SG30">SG30</option>
+          <option value="SGD">SGD</option>
+          <option value="DE10YB">DE10YB</option>
+          <option value="SOYBN">SOYBN</option>
+          <option value="XAG">XAG</option>
+          <option value="USB30Y">USB30Y</option>
+          <option value="XPT">XPT</option>
+          <option value="CORN">CORN</option>
+          <option value="NL25">NL25</option>
+          <option value="WTICO">WTICO</option>
+          <option value="TRY">TRY</option>
+          <option value="TWIX">TWIX</option>
+          <option value="NAS100">NAS100</option>
+          <option value="AU200">AU200</option>
+          <option value="FR40">FR40</option>
+          <option value="CN50">CN50</option>
+          <option value="NATGAS">NATGAS</option>
+          <option value="XPD">XPD</option>
+          <option value="UK100">UK100</option>
+          <option value="IN50">IN50</option>
+          <option value="BCO">BCO</option>
+          <option value="JP225">JP225</option>
+          <option value="ZAR">ZAR</option>
+          <option value="WHEAT">WHEAT</option>
+          <option value="DE30">DE30</option>
+          <option value="HKD">HKD</option>
+          <option value="XCU">XCU</option>
+          <option value="US2000">US2000</option>
+          <option value="SUGAR">SUGAR</option>
+          <option value="USB10Y">USB10Y</option>
+          <option value="SPX500">SPX500</option>
+          <option value="USB02Y">USB02Y</option>
+        </select>
+        <div *ngIf="input.firstCurrency.invalid && input.firstCurrency.touched">
+          <div *ngIf="input.firstCurrency.errors?.required">
+            Please select currency.
+          </div>
         </div>
-        <div *ngIf="input.currency.errors?.pattern">
-          Invalid input! Example input: <span class="example">EUR/USD</span>
+      </div>
+      <div class="currencySelect">
+        <label for="secondCurrency">Select second currency</label>
+        <select class="currency" name="secondCurrency" id="secondCurrency" formControlName="secondCurrency">
+          <option value="USD">USD</option>
+          <option value="JPY">JPY</option>
+          <option value="GBP">GBP</option>
+          <option value="CHF">CHF</option>
+          <option value="CAD">CAD</option>
+          <option value="NZD">NZD</option>
+          <option value="AUD">AUD</option>
+          <option value="NOK">NOK</option>
+          <option value="SEK">SEK</option>
+          <option value="EUR">EUR</option>
+          <option value="INR">INR</option>
+          <option value="HKD">HKD</option>
+          <option value="GB">GB</option>
+          <option value="SGD">SGD</option>
+          <option value="EU">EU</option>
+          <option value="US">US</option>
+          <option value="TRY">TRY</option>
+          <option value="PLN">PLN</option>
+          <option value="CZK">CZK</option>
+          <option value="ZAR">ZAR</option>
+          <option value="HUF">HUF</option>
+          <option value="AU">AU</option>
+          <option value="SAR">SAR</option>
+          <option value="DKK">DKK</option>
+          <option value="THB">THB</option>
+          <option value="MXN">MXN</option>
+          <option value="XAG">XAG</option>
+          <option value="CNH">CNH</option>
+        </select>
+        <div *ngIf="input.secondCurrency.invalid && input.secondCurrency.touched">
+          <div *ngIf="input.secondCurrency.errors?.required">
+            Please select currency.
+          </div>
         </div>
       </div>
     </div>

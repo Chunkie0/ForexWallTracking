@@ -12,7 +12,7 @@
   margin-bottom: 8px;
   padding: 0 8px;
   position: relative;
-  width: 300px;
+  width: 100%;
 }
 
 .inputForm:first-child {
@@ -63,4 +63,28 @@ td:last-child {
 
 .example {
   font-weight: bold;
+}
+
+.currencySelect {
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  padding: 0 5px 5px;
+  width: 100%;
+  background-color:#ebebeb;
+}
+
+.currencySelect label {
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #777;
+  padding: 2px 8px 0;
+}
+
+.currency {
+  background-color: #ebebeb;
+  border: 0px;
+  width: 100%;
+  padding-left: 2px;
+  font-size: 14px;
+
 }
