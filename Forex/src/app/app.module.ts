@@ -14,7 +14,7 @@ import { HomePageComponent} from './home-page/home-page.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

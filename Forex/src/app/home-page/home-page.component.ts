@@ -1,4 +1,3 @@
-import { getLocaleDateTimeFormat } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -9,37 +8,41 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class HomePageComponent implements OnInit {
   results: any;
-  userInput = { currency: 'EUR/USD', apiKey: '', interval: 2 }
+  userInput = { currency: 'EUR/USD', interval: 2 };
   userInputForm!: FormGroup;
-
+  currencyArray: string[] = [];
+  notInitialized: boolean = true;
   constructor() { }
 
   ngOnInit(): void {
     this.userInputForm = new FormGroup({
-      currency: new FormControl(this.userInput.currency, [Validators.minLength(7)]),
-      apiKey: new FormControl(this.userInput.apiKey),
-      interval: new FormControl(this.userInput.interval)
+      currency: new FormControl(this.userInput.currency, [Validators.required, Validators.pattern(/^[A-z']{3}\/[A-z']{3}$/)]),
+      interval: new FormControl(this.userInput.interval, [Validators.max(600)])
     })
   }
 
   onSubmit() {
-    if (this.input.apiKey.value === "") {
-      setInterval(() => {
-        this.fetchCurrency(this.input.currency.value)
-      }, this.userInput.interval * 1000)
-    } else {
-      setInterval(() => {
-        this.fetchCurrency(this.input.currency.value, this.input.apiKey.value)
-      }, this.userInput.interval * 1000)
+    this.currencyArray.unshift(this.input.currency.value.toUpperCase())
+
+    if (this.notInitialized) {
+      this.fetchCurrency(this.currencyArray[0]);
+      this.notInitialized = false;
     }
+
+    if (this.currencyArray.length == 2) { this.currencyArray.pop() }
+
+    setInterval(() => {
+      this.fetchCurrency(this.currencyArray[0])
+    }, this.input.interval.value * 1000)
   }
 
   get input() { return this.userInputForm.controls }
 
-  private async fetchCurrency(currency: string, API_KEY: string = '696cb5103decbd1a9cc7a96dffd0ee73'): Promise<any> {
-    const getCurrency = await fetch(`https://financialmodelingprep.com/api/v3/fx/${currency.replace('/', '')}?apikey=${API_KEY}`)
+  private async fetchCurrency(currency: string): Promise<any> {
+    const getCurrency = await fetch(`https://financialmodelingprep.com/api/v3/fx/${currency.replace('/', '')}?apikey=ae1fbf49d3a1c7c5111b74a1486776df`)
     getCurrency.json().then(data => {
       this.results = data
+      console.log(data)
     })
   }
 

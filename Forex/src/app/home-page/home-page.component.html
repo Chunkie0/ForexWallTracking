@@ -4,21 +4,30 @@
     <div class="inputForm">
       <label for="currencies">Currencies</label>
       <input formControlName="currency" name="currencies" type=text maxlength="7">
+      <div *ngIf="input.currency.invalid && input.currency.touched">
+        <div *ngIf="input.currency.errors?.required">
+          Currency pairs are required.
+        </div>
+        <div *ngIf="input.currency.errors?.pattern">
+          Invalid input! Example input: <span class="example">EUR/USD</span>
+        </div>
+      </div>
     </div>
     <div class="inputForm">
       <label for="interval">Update interval in seconds</label>
-      <input formControlName="interval" type="number" name="interval">
+      <input formControlName="interval" type="number" name="interval" max="600">
+      <div *ngIf="input.interval.invalid && input.interval.touched">
+        <div *ngIf="input.interval.errors?.max">
+          Maximum interval is 600 seconds or 10 minutes.
+        </div>
+      </div>
     </div>
-    <div class="inputForm">
-      <label for="api">Enter API key(optional)</label>
-      <input formControlName="apiKey" type="text" name="api">
-    </div>
-    <input type="submit" value="Submit" class="submit">
+    <input type="submit" value="Submit" class="submit" [disabled]="!userInputForm.valid">
   </form>
   <table>
     <thead>
       <tr>
-        <th>Ticker</th>
+        <th colspan="2">Ticker</th>
         <th>Bid</th>
         <th>Ask</th>
         <th>Open</th>
@@ -30,7 +39,8 @@
     </thead>
     <tbody>
       <tr *ngFor="let result of results">
-        <td>{{result.ticker}}</td>
+        <td>{{result.ticker.split('/')[0]}}</td>
+        <td>{{result.ticker.split('/')[1]}}</td>
         <td>{{result.bid}}</td>
         <td>{{result.ask}}</td>
         <td>{{result.open}}</td>
