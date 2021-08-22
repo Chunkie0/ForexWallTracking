@@ -2,8 +2,8 @@
 
 ## Content
 
-*[About the application](#about-the-application)
-*[How to run this application locally](#how-to-run-this-application-locally)
+- [About the application](#about-the-application)  
+- [How to run this application locally](#how-to-run-this-application-locally)
 
 
 ## About the application
