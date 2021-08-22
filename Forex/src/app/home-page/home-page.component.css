@@ -4,7 +4,6 @@
   align-items: center;
   flex-direction: column;
   width: 100%;
-  height: 100%;
 }
 
 .inputForm {
@@ -100,3 +99,44 @@ form {
 .formsInput{
   margin-top: 30px;
 }
+
+@media only screen and (max-width: 600px) {
+  .formsResults { margin:auto; overflow: visible;}
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	tr { border: 1px solid #ccc; }
+	
+	td { 
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 40%; 
+	}
+	
+	td:before { 
+		position: absolute;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+	}
+
+	td:nth-of-type(1):before { content: "First ticker"; }
+  td:nth-of-type(2):before { content: "Second ticker";}
+	td:nth-of-type(3):before { content: "Bid"; }
+	td:nth-of-type(4):before { content: "Ask"; }
+	td:nth-of-type(5):before { content: "Open"; }
+	td:nth-of-type(6):before { content: "Low"; }
+	td:nth-of-type(7):before { content: "High"; }
+	td:nth-of-type(8):before { content: "Changes"; }
+	td:nth-of-type(9):before { content: "Date"; }
+}
+

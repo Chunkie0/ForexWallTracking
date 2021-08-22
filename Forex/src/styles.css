@@ -1,3 +1,4 @@
+
 * {
     box-sizing: border-box;
     outline: 0;
@@ -16,7 +17,14 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
     margin: 0 auto;
-    margin-top: 100px;
+    margin-top: -10%;
 }
+
+@media only screen and (max-width: 600px) {
+    main{ width: 100%; overflow: scroll;}
+}
+  
